@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Raízes do Verde: Turismo Rural e Sustentável</h1>
+        <nav>
+            <ul>
+                <li><a href="#destinos">Destinos</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#mapa">Mapa</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="destinos">
+        <h2>Destinos Incríveis</h2>
+        <div class="cards">
+            <div class="card" data-destino="Açailândia" data-imagem="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400">Açailândia</div>
+            <div class="card" data-destino="São Luis" data-imagem="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400">São Luis</div>
+            <div class="card" data-destino="Codó" data-imagem="https://images.unsplash.com/photo-1557682278-9c0e8e370e02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400">Codó</div>
+            <div class="card" data-destino="Piauí" data-imagem="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400">Piauí</div>
+        </div>
+        <div id="descricao" class="descricao"></div>
+    </section>
+    
+    <section id="mapa">
+        <h2>Mapa</h2>
+        <div id="map"></div>
+    </section>
+    
+    <section id="galeria">
+        <h2>Galeria de Fotos</h2>
+        <div class="image-grid">
+            <img src="https://via.placeholder.com/300" alt="Imagem 1">
+            <img src="https://via.placeholder.com/300" alt="Imagem 2">
+            <img src="https://via.placeholder.com/300" alt="Imagem 3">
+            <img src="https://via.placeholder.com/300" alt="Imagem 4">
+        </div>
+    </section>
+    
+    <footer id="contato">
+        <p>Entre em contato: email@contato.Davesss</p>
+        <p>Créditos: @Dave</p>
+    </footer>
+    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([-2.5299, -44.3028], 6); // Centraliza no Maranhão
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Pontos turísticos no Maranhão
+        const locations = [
+            { lat: -2.5299, lng: -44.3028, name: "São Luís", info: "Capital do Maranhão." },
+            { lat: -2.5689, lng: -43.1338, name: "Lençóis Maranhenses", info: "Parque Nacional com dunas e lagoas." },
+            { lat: -2.7753, lng: -43.5832, name: "Alcântara", info: "Histórica cidade colonial." },
+            { lat: -2.5111, lng: -44.4116, name: "Lagoa do Junco", info: "Belas lagoas e natureza." }
+            ,{ lat: -4.9491, lng: -47.4825, name: "Açailândia", info: "Interior." }
+        ];
+
+        // Adicionando marcadores ao mapa
+        locations.forEach(location => {
+            const marker = L.marker([location.lat, location.lng]).addTo(map)
+                .bindPopup(`<strong>${location.name}</strong><br>${location.info}`);
+                
+        });
+    </script>
+</body>
+</html>
