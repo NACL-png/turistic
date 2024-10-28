@@ -12,11 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>Uma cidade cheia de encantos e aventuras.</p>
                 <img src="${imagem}" alt="${destino}">
             `;
-            descricao.style.opacity = 1; // Faz a descrição aparecer
+            descricao.style.opacity = 1;
         });
     });
 
-    // Animação ao entrar na seção de galeria
     const gallerySection = document.getElementById('galeria');
     gallerySection.style.opacity = 0;
     setTimeout(() => {
