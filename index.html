@@ -61,14 +61,13 @@
     
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        const map = L.map('map').setView([-2.5299, -44.3028], 6); // Centraliza no Maranhão
+        const map = L.map('map').setView([-2.5299, -44.3028], 6);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Pontos turísticos no Maranhão
         const locations = [
             { lat: -2.5299, lng: -44.3028, name: "São Luís", info: "Capital do Maranhão." },
             { lat: -2.5689, lng: -43.1338, name: "Lençóis Maranhenses", info: "Parque Nacional com dunas e lagoas." },
@@ -77,7 +76,6 @@
             ,{ lat: -4.9491, lng: -47.4825, name: "Açailândia", info: "Interior." }
         ];
 
-        // Adicionando marcadores ao mapa
         locations.forEach(location => {
             const marker = L.marker([location.lat, location.lng]).addTo(map)
                 .bindPopup(`<strong>${location.name}</strong><br>${location.info}`);
